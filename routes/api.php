@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestimonialController;
-
+use App\Http\Controllers\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +32,9 @@ Route::get("getTestimonial",[TestimonialController::class,'get_testimonial']);
 Route::post("saveTestimonial",[TestimonialController::class,'save_testimonial']);
 Route::post("updateTestimonial",[TestimonialController::class,'update_testimonial']);
 Route::get("deleteTestimonial/{id}",[TestimonialController::class,'delete_testimonial']);
+
+//City
+Route::get("getCity",[CityController::class,'get_cities']);
+Route::post("saveCity",[CityController::class,'save_cities']);
+Route::post("updateCity",[CityController::class,'update_cities']);
+Route::get("deleteCity/{id}",[CityController::class,'delete_cities']);
