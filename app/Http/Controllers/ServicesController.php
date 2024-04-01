@@ -21,6 +21,7 @@ class ServicesController extends Controller
         $service = new Services();
         $service->heading = $request['heading'];
         $service->description = $request['description'];
+        $service->short_description = $request['short_description'];
 
         if ($files = $request->file('image')) {
             // Define upload path
