@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,9 @@ Route::get("getCity",[CityController::class,'get_cities']);
 Route::post("saveCity",[CityController::class,'save_cities']);
 Route::post("updateCity",[CityController::class,'update_cities']);
 Route::get("deleteCity/{id}",[CityController::class,'delete_cities']);
+
+//Contact Us
+Route::get("getContactUs",[ContactUsController::class,'get_contact_us']);
+Route::post("saveContactUs",[ContactUsController::class,'save_contact_us']);
+Route::post("updateContactUs",[ContactUsController::class,'update_contact_us']);
+Route::get("deleteContactUs/{id}",[ContactUsController::class,'delete_contact_us']);
