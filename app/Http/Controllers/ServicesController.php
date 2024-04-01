@@ -19,27 +19,28 @@ class ServicesController extends Controller
     public function save_service(Request $request)
     {
         $service = new Services();
-        $service->image = $request['image_name'];
         $service->heading = $request['heading'];
         $service->description = $request['description'];
-        $service->icon = $request['icon_name'];
-        $service->save();
 
         if ($files = $request->file('image')) {
             // Define upload path
             $destinationPath = public_path('/service/img/'); // upload path
             // Upload Orginal Image
-            $profileImage1 = $files->getClientOriginalName();
-            $files->move($destinationPath, $profileImage1);
+            $file_name = $files->getClientOriginalName();
+            $files->move($destinationPath, $file_name);
         }
+
+        $service->image = $file_name;
 
         if ($files = $request->file('icon')) {
             // Define upload path
             $destinationPath = public_path('/service/icon/'); // upload path
             // Upload Orginal Image
-            $profileImage1 = $files->getClientOriginalName();
-            $files->move($destinationPath, $profileImage1);
+            $file_name = $files->getClientOriginalName();
+            $files->move($destinationPath, $file_name);
         }
+        $service->icon = $file_name;
+        $service->save();
 
         return response()->json(['success'=>1, 'data'=>$service], 200,[],JSON_NUMERIC_CHECK);
     }

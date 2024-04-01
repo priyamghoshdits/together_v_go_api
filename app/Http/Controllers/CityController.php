@@ -18,19 +18,22 @@ class CityController extends Controller
 
     public function save_cities(Request $request)
     {
+
+//        return  $request->file('image')->getClientOriginalName();
         $cities = new City();
         $cities->name = $request['name'];
-        $cities->image = $request['image'];
-        $cities->status = $request['status'] ?? null;
-        $cities->save();
 
         if ($files = $request->file('image')) {
             // Define upload path
             $destinationPath = public_path('/cities/'); // upload path
             // Upload Orginal Image
-            $profileImage1 = $files->getClientOriginalName();
-            $files->move($destinationPath, $profileImage1);
+            $file_name = $files->getClientOriginalName();
+            $files->move($destinationPath, $file_name);
         }
+//        $cities->image = $request['image'];
+        $cities->image = $file_name ?? null;
+        $cities->status = $request['status'] ?? null;
+        $cities->save();
         return response()->json(['success'=>1, 'data'=>$cities], 200,[],JSON_NUMERIC_CHECK);
     }
 
