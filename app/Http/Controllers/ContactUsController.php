@@ -19,6 +19,7 @@ class ContactUsController extends Controller
     {
         $requestedData = (object)$request->json()->all();
         $contactUs = new ContactUs();
+        $contactUs->name = $requestedData->name;
         $contactUs->email = $requestedData->email;
         $contactUs->phone = $requestedData->phone;
         $contactUs->subject = $requestedData->subject;
@@ -31,6 +32,7 @@ class ContactUsController extends Controller
     {
         $requestedData = (object)$request->json()->all();
         $contactUs = ContactUs::find($requestedData->id);
+        $contactUs->name = $requestedData->name;
         $contactUs->email = $requestedData->email;
         $contactUs->phone = $requestedData->phone;
         $contactUs->subject = $requestedData->subject;
